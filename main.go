@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"go-api/jetpack"
 )
 
 func main() {
-	fmt.Println("test here")
+	jet := jetpack.NewJetpack()
+	fmt.Println(jet.Print())
 }
