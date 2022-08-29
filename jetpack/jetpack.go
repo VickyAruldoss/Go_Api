@@ -1,6 +1,6 @@
 package jetpack
 
-//go generate mockgen -source=jetpack/jetpack.go -destination=./mocks/jetpack_mock.go
+//go generate mockgen -source=jetpack/jetpack.go -destination= ./mocks/jetpack_mock.go
 
 type Jetpack interface {
 	Init()
