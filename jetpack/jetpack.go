@@ -19,6 +19,9 @@ func (jetpack jetpack) Init() {
 
 }
 func (jetpack jetpack) Print() string {
+	if jetpack.isToStart {
+		return "OMG it works"
+	}
 	return "OMG it works"
 }
 
