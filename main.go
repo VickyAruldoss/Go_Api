@@ -11,6 +11,10 @@ var users = map[string]string{
 }
 var us = []string{"Vicky", "Aruldoss", "John", "Smith"}
 
+// @title User API documentation
+// @version 1.0.0
+// @host localhost:8080
+// @BasePath /user
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
@@ -23,6 +27,10 @@ func main() {
 	//r.POST("/user",CreateUser)
 	//r.DELETE("/user",DeleteUser)
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+
+	// r := route.SetupRouter()
+	// r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	// r.Run(":" + os.Getenv("SERVER_PORT"))
 }
 
 func GetAllUsers(c *gin.Context) {
@@ -31,7 +39,7 @@ func GetAllUsers(c *gin.Context) {
 	})
 }
 
-func GetUsers(c *gin.Context) {
+func Get(c *gin.Context) {
 	name := c.Query("fullname")
 	fullname, ok := users[name]
 	if !ok {
