@@ -21,37 +21,21 @@ func GetUsers(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"User": user})
+	c.JSON(http.StatusOK, gin.H{"Users": user})
 }
 
-// CreateUser ... Create User
-// func CreateUser(c *gin.Context) {
-// 	var user model.User
-// 	if err := c.BindJSON(&user); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	err := model.CreateUser(&user)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	c.JSON(http.StatusOK, gin.H{"message": "success"})
-// }
+func CreateUser(c *gin.Context) {
+	var user model.User
+	if err := c.BindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Request"})
+		return
+	}
+	model.CreateUser(user)
+	c.JSON(http.StatusOK, gin.H{"message": "savedSuccessFully"})
+	return
+}
 
-// GetUserByID ... Get the user by id
-// func GetUserByID(c *gin.Context) {
-// 	id := c.Params.ByName("id")
-// 	userID, err := model.StringToBinaryUUID(id)
-// 	if err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	var user model.User
-// 	err = model.GetUserByID(&user, userID)
-// 	if err != nil {
-// 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	c.JSON(http.StatusOK, gin.H{"data": user})
-// }
+func GetUserById(c *gin.Context) {
+	//id := c.Params.ByName("id")
+
+}
