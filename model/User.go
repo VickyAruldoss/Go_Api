@@ -21,5 +21,12 @@ func CreateUser(user User) {
 }
 
 func GetUserById(id int) User {
-	return users[0]
+	var user User
+	for _, v := range users {
+		if v.ID == id {
+			user = v
+			break
+		}
+	}
+	return user
 }

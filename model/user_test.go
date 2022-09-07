@@ -25,12 +25,23 @@ func (suite UserTestSuite) TestShouldGetAllTheUsers() {
 	if err != nil {
 		suite.Fail("Error While Get All users")
 	}
-	suite.Equal(2, len(users))
+	suite.True(len(users) > 0)
 
 }
 
 func (suite UserTestSuite) TestShouldReturnSpecificUserByUserId() {
-	user := GetUserById(2)
-	suite.Equal(2, user.ID)
+	user := GetUserById(1)
+	suite.Equal(1, user.ID)
+}
 
+func (suite UserTestSuite) TestShouldCreateUser() {
+	mockUser := User{
+		ID:      3,
+		Name:    "John Smith",
+		Phone:   "9847578494",
+		Address: "Sydney",
+	}
+	CreateUser(mockUser)
+	users, _ := GetAllUsers()
+	suite.Equal(3, len(users))
 }
