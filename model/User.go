@@ -30,3 +30,18 @@ func GetUserById(id int) (User, error) {
 	}
 	return user, nil
 }
+
+func DeleteUser(id int) (int, error) {
+	var index int
+	for i, v := range users {
+		if v.ID == id {
+			index = i
+			break
+		}
+	}
+	return index, nil
+}
+
+// func removeUserByIndex(i int) {
+// 	// append(users[:i], users[i+1:]...)
+// }

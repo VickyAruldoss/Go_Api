@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"os"
 	"testing"
 
@@ -49,6 +48,11 @@ func (suite UserTestSuite) TestShouldCreateUser() {
 
 func (suite UserTestSuite) TestShouldThrowExceptionWhenThereIsNoDataForSpecificId() {
 	user, _ := GetUserById(4)
-	fmt.Println(user)
 	suite.Zero(user)
+}
+
+func (suite UserTestSuite) TestshouldRemoveTheUserById() {
+	DeleteUser(2)
+	user, _ := GetAllUsers()
+	suite.Equal(1, len(user))
 }
