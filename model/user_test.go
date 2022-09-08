@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -30,7 +31,7 @@ func (suite UserTestSuite) TestShouldGetAllTheUsers() {
 }
 
 func (suite UserTestSuite) TestShouldReturnSpecificUserByUserId() {
-	user := GetUserById(1)
+	user, _ := GetUserById(1)
 	suite.Equal(1, user.ID)
 }
 
@@ -44,4 +45,10 @@ func (suite UserTestSuite) TestShouldCreateUser() {
 	CreateUser(mockUser)
 	users, _ := GetAllUsers()
 	suite.Equal(3, len(users))
+}
+
+func (suite UserTestSuite) TestShouldThrowExceptionWhenThereIsNoDataForSpecificId() {
+	user, _ := GetUserById(4)
+	fmt.Println(user)
+	suite.Zero(user)
 }

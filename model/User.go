@@ -20,7 +20,7 @@ func CreateUser(user User) {
 	users = append(users, user)
 }
 
-func GetUserById(id int) User {
+func GetUserById(id int) (User, error) {
 	var user User
 	for _, v := range users {
 		if v.ID == id {
@@ -28,5 +28,5 @@ func GetUserById(id int) User {
 			break
 		}
 	}
-	return user
+	return user, nil
 }
